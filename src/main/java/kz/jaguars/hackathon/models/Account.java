@@ -1,20 +1,21 @@
 package kz.jaguars.hackathon.models;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Builder
 public class Account {
 
@@ -23,7 +24,7 @@ public class Account {
     }
 
     public enum Role {
-        USER, ADMIN
+        USER
     }
 
     @Id
@@ -42,6 +43,7 @@ public class Account {
     private Boolean banned = false;
 
     @ManyToMany
+    @ToString.Exclude
     private Set<Product> preferences = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
@@ -49,5 +51,16 @@ public class Account {
     @Enumerated(value = EnumType.STRING)
     private State state;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Account account = (Account) o;
+        return id != null && Objects.equals(id, account.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
