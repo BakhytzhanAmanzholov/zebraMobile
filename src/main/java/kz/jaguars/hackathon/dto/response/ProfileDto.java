@@ -14,5 +14,5 @@ public class ProfileDto {
     private String email;
     private String phoneNumber;
 
-    private Set<ProductDto> preferences = new HashSet<>();
+    private Set<ProductDto> preferences;
 }
