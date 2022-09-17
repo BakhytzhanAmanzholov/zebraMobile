@@ -1,9 +1,12 @@
 package kz.jaguars.hackathon.dto.mappers;
 
 import kz.jaguars.hackathon.dto.request.RegistrationDto;
+import kz.jaguars.hackathon.dto.response.ProfileDto;
 import kz.jaguars.hackathon.models.Account;
+import kz.jaguars.hackathon.models.Product;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class AccountMapper {
     public static Account fromRequestDto(RegistrationDto registrationDto){
@@ -15,5 +18,19 @@ public class AccountMapper {
                 .banned(true)
                 .confirmed(false)
                 .build();
+    }
+
+    public static ProfileDto toResponseDto(Account account){
+        ProfileDto profile =  ProfileDto.builder()
+                .id(account.getId())
+                .email(account.getEmail())
+                .phoneNumber(account.getPhoneNumber())
+                .username(account.getUsername())
+                .preferences(new HashSet<>())
+                .build();
+        for (Product product: account.getPreferences()){
+            profile.getPreferences().add(ProductMapping.productDto(product));
+        }
+        return profile;
     }
 }
