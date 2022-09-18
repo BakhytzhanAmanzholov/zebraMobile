@@ -5,14 +5,13 @@ import kz.jaguars.hackathon.models.Product;
 import lombok.Builder;
 import lombok.Data;
 
-@Data
-@Builder
-public class ProductMapping {
-    public static ProductDto productDto(Product product){
+public class ProductMapper {
+    public static ProductDto toResponseDto(Product product){
         return ProductDto.builder()
                 .id(product.getId())
                 .description(product.getDescription())
                 .title(product.getTitle())
+                .price(product.getSalePrice())
                 .build();
     }
 }

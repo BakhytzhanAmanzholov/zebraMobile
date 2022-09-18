@@ -5,7 +5,6 @@ import kz.jaguars.hackathon.dto.response.ProfileDto;
 import kz.jaguars.hackathon.models.Account;
 import kz.jaguars.hackathon.models.Product;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class AccountMapper {
@@ -29,7 +28,7 @@ public class AccountMapper {
                 .preferences(new HashSet<>())
                 .build();
         for (Product product: account.getPreferences()){
-            profile.getPreferences().add(ProductMapping.productDto(product));
+            profile.getPreferences().add(ProductMapper.toResponseDto(product));
         }
         return profile;
     }

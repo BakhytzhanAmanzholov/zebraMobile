@@ -4,10 +4,7 @@ package kz.jaguars.hackathon.models;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -24,6 +21,11 @@ public class Product {
 
     private String title;
     private String description;
+
+    private Integer salePrice;
+
+    @ManyToOne
+    private Category category;
 
     @Override
     public boolean equals(Object o) {

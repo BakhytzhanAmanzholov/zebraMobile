@@ -1,6 +1,6 @@
 package kz.jaguars.hackathon.controllers;
 
-import kz.jaguars.hackathon.dto.mappers.PreferenceMapping;
+import kz.jaguars.hackathon.dto.mappers.PreferenceMapper;
 import kz.jaguars.hackathon.dto.response.PreferenceDto;
 import kz.jaguars.hackathon.models.Preference;
 import kz.jaguars.hackathon.services.PreferenceService;
@@ -26,7 +26,7 @@ public class PreferenceController {
         List<Preference> preferences = preferenceService.findAll();
         List<PreferenceDto> dtoList = new ArrayList<>();
         for (Preference preference: preferences){
-            dtoList.add(PreferenceMapping.preferenceDto(preference));
+            dtoList.add(PreferenceMapper.toResponseDto(preference));
         }
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
