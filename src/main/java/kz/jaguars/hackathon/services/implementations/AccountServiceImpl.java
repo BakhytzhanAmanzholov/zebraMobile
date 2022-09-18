@@ -1,6 +1,7 @@
 package kz.jaguars.hackathon.services.implementations;
 
 import kz.jaguars.hackathon.models.Account;
+import kz.jaguars.hackathon.models.Booking;
 import kz.jaguars.hackathon.repositories.AccountRepository;
 import kz.jaguars.hackathon.services.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -81,5 +82,11 @@ public class AccountServiceImpl implements AccountService {
             return currentPrincipalName;
         }
         return "anonymousUser";
+    }
+
+    @Override
+    public void addOrderToAccount(Booking booking, Long id) {
+        Account account = findById(id);
+        account.getOrders().add(booking);
     }
 }

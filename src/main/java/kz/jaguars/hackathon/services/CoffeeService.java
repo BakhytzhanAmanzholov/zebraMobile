@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CoffeeService {
     List<CoffeeHouse> findAll();
+
+    CoffeeHouse findById(Long id);
 }

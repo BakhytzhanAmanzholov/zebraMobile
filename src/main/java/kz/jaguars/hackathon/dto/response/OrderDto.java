@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class OrderHistoryDto {
+public class OrderDto {
     private Long id;
     private String date;
     private Boolean completed;

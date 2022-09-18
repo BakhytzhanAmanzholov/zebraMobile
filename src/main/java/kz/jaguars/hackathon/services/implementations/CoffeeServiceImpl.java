@@ -1,5 +1,6 @@
 package kz.jaguars.hackathon.services.implementations;
 
+import kz.jaguars.hackathon.exceptions.NotFoundException;
 import kz.jaguars.hackathon.models.CoffeeHouse;
 import kz.jaguars.hackathon.repositories.CoffeeRepository;
 import kz.jaguars.hackathon.services.CoffeeService;
@@ -20,5 +21,11 @@ public class CoffeeServiceImpl implements CoffeeService {
     @Override
     public List<CoffeeHouse> findAll() {
         return (List<CoffeeHouse>) coffeeRepository.findAll();
+    }
+
+    @Override
+    public CoffeeHouse findById(Long id) {
+        return coffeeRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Coffee <" + id + "> not found"));
     }
 }

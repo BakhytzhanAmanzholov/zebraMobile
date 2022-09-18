@@ -1,6 +1,6 @@
 package kz.jaguars.hackathon.dto.mappers;
 
-import kz.jaguars.hackathon.dto.response.OrderHistoryDto;
+import kz.jaguars.hackathon.dto.response.OrderDto;
 import kz.jaguars.hackathon.models.Booking;
 import kz.jaguars.hackathon.models.Product;
 import lombok.Builder;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 @Data
 @Builder
 public class OrderMapper {
-    public static OrderHistoryDto toResponseDto(Booking booking) {
-        OrderHistoryDto dto = OrderHistoryDto.builder()
+    public static OrderDto toResponseDto(Booking booking) {
+        OrderDto dto = OrderDto.builder()
                 .id(booking.getId())
                 .date(booking.getDate().toString())
                 .coffeeHouse(CoffeeMapper.toResponseDto(booking.getCoffeeHouse()))
