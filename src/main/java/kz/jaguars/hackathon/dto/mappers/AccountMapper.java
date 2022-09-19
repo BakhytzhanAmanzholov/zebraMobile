@@ -26,6 +26,7 @@ public class AccountMapper {
                 .phoneNumber(account.getPhoneNumber())
                 .username(account.getUsername())
                 .preferences(new HashSet<>())
+                .discount(account.getDiscount())
                 .build();
         for (Product product: account.getPreferences()){
             profile.getPreferences().add(ProductMapper.toResponseDto(product));

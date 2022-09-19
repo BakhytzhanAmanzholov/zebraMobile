@@ -9,4 +9,6 @@ public interface PreferenceService extends CrudService<Preference, Long>{
     List<Preference> findAll();
 
     void addPreferenceToUser(Long id);
+
+
 }

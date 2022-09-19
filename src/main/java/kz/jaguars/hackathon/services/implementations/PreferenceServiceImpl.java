@@ -58,4 +58,6 @@ public class PreferenceServiceImpl implements PreferenceService {
         Account account = accountService.findByEmail(accountService.isLogged());
         account.getPreferences().addAll(preference.getProducts());
     }
+
+
 }

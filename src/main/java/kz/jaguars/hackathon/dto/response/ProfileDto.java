@@ -13,6 +13,7 @@ public class ProfileDto {
     private String username;
     private String email;
     private String phoneNumber;
+    private Integer discount;
 
     private Set<ProductDto> preferences;
 }
